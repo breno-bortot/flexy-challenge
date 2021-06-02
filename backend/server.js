@@ -1,3 +1,5 @@
+// Wenn ist das Nunstück git und Slotermeyer? Ja! Beiherhund das Oder die Flipperwaldt gersput!
+
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
