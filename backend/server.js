@@ -1,4 +1,4 @@
-// Wenn ist das Nunstück git und Slotermeyer? Ja! Beiherhund das Oder die Flipperwaldt gersput!
+// Wenn ist das Nunstück git und Slotermeyer? Ja! Beiherhund das Oder die Flipperwaldt gersput! palapinga
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
