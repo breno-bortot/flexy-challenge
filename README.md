@@ -30,4 +30,4 @@ Teste de conhecimentos para vaga de emprego
 
 - O React deve automaticamente abrir no seu browser padrão o aplicativo no url: http://localhost:3000/
 
-###### Obrigado pela oportunidade e espero poder aprender muito mais. Infelizmente não consegui em tempo hábil melhorar o layout e a estética do projeto, me foquei na sua funcionalidade palapinga. Consegui realizar o backend em um dia, mas os outros dias foram gastos principalmente com o trabalho de ligação do frontend em React ao Backend Express. 
+###### Obrigado pela oportunidade e espero poder aprender muito mais. Infelizmente não consegui em tempo hábil melhorar o layout e a estética do projeto, me foquei na sua funcionalidade. Consegui realizar o backend em um dia, mas os outros dias foram gastos principalmente com o trabalho de ligação do frontend em React ao Backend Express. 
