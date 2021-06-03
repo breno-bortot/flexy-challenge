@@ -18,13 +18,13 @@ Teste de conhecimentos para vaga de emprego
 
 - Instalar Node.js e npm
 - Instalar MongoDb local com o URL:(DATABASE_URL=mongodb://localhost/flexychallenge) ou usar Atlas e pegar o URL fonercido.
--Abrir VSCode, no terminal ---> cd backend/
+- Abrir VSCode, no terminal ---> cd backend/
                            ---> npm install
 , criar arquivo .env, dentro dele criar variável: DATABASE_URL=, e colar o URL do MongoAtlas ou mesmo colar a URL local acima entre parêntese.
 -               no terminal ---> npm run devStart
 
 
--Em outro terminal ---> cd frontend/
+- Em outro terminal ---> cd frontend/
                    ---> npm install
                    ---> npm run start
 
