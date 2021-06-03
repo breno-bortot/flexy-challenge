@@ -104,20 +104,16 @@ app.put('/produtos/:id', uploadFile, getProduct, async (req, res) => {
         console.log(req.body) 
         
         if (req.body.title != null) {
-            console.log('entrou title')
             res.product.title = req.body.title
         }
         if (req.body.description != null) {
-            console.log('entrou description')
             res.product.description = req.body.description
         }
         if (req.body.stock != null) {
-            console.log('entrou stock')
             res.product.stock = req.body.stock
         }
  
         if (req.file != null && req.file != '') {
-            console.log('entrou file')
             removeImage(res.product.imageName)
             res.product.imageName = req.file.filename
         }

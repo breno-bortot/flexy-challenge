@@ -49,12 +49,13 @@ function App() {
     setMessage(data.message)
 
     setError(data.error)
-
+   
     setLoading(false)
-    setQuery('')
+    
     setTimeout(() => {
       handleClose()
-    }, 1000);
+    }, 1250);
+   
 
   }
   const getProducts = async () => {
@@ -66,6 +67,10 @@ function App() {
     setError(data.error)
 
   }
+
+  
+  
+ 
 
   return (
     <div className="App">
@@ -100,18 +105,18 @@ function App() {
                   <div className="modal-body">
                     <Form.Group controlId="exampleForm.ControlInput1">
                       <Form.Label>Title</Form.Label>
-                      <Form.Control type="text" placeholder="Title" name="title" required />
+                      <Form.Control type="text" minLength="6" placeholder="Min. 6 characters" name="title" required />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Descripton</Form.Label>
-                      <Form.Control as="textarea" rows={6} placeholder="Description" name="description" />
+                      <Form.Control as="textarea" maxlength="4000"  rows={6} placeholder="Max. 4000 characters" name="description" />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlInput1">
                       <Form.Label>Stock</Form.Label>
                       <Form.Control type="number" min="0" placeholder="0" name="stock" required />
                     </Form.Group>
                     <Form.Group>
-                      <Form.File id="exampleFormControlFile1" label="Image" name="image" required custom/>
+                      <Form.File id="exampleFormControlFile1" label="Image Max. 5MB" name="image" required custom/>
                     </Form.Group>
                   </div>
                   <div className="modal-footer">

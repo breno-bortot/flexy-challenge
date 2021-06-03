@@ -5,18 +5,18 @@ const Produto = ({ setQuery, error, message, setError, setMessage, setLoading, l
     const [myForm2, setMyForm2] = useState()
     const [idUpdate, setIdUpdate] = useState()
     const [query2, setQuery2] = useState([])
-    
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
 
-     useEffect(() => {
+    useEffect(() => {
         if (query2.length !== 0) {
             putProduct()
         }
-    }, [query2]) 
+    }, [query2])
 
     const deleteProduct = async (id) => {
         const response = await fetch(`/produtos/${id}`, { method: 'DELETE' })
@@ -35,19 +35,19 @@ const Produto = ({ setQuery, error, message, setError, setMessage, setLoading, l
         setMessage('')
         setError('')
         setLoading(true)
-     
-        setQuery2(requestOptions2)       
+
+        setQuery2(requestOptions2)
     }
-    
+
     let formData2 = new FormData(myForm2)
-      const requestOptions2 = {
+    const requestOptions2 = {
         method: 'PUT',
         body: formData2
-      }
+    }
 
 
     const putProduct = async () => {
-       
+
         const response = await fetch(`/produtos/${idUpdate}`, requestOptions2)
         const data = await response.json()
         setMessage(data.message)
@@ -57,7 +57,7 @@ const Produto = ({ setQuery, error, message, setError, setMessage, setLoading, l
         setLoading(false)
         setTimeout(() => {
             handleClose()
-        }, 1000);
+        }, 1250);
         setQuery(`put_${idProduct}`)
     }
     return (
@@ -79,34 +79,34 @@ const Produto = ({ setQuery, error, message, setError, setMessage, setLoading, l
                             <Card.Text className='mt-2'>
                                 Description: {description}
                             </Card.Text>
-                            {message && <Alert variant='warning'>{message}</Alert>}
+                            {message && <Alert variant='success'>{message}</Alert>}
                             {error && <Alert variant='danger'>{error}</Alert>}
 
                         </ListGroup>
 
                         <Button className="delete-product float-end m-1 bi bi-trash-fill" id={`${idProduct}`}
                             variant="danger" onClick={() => deleteProduct(idProduct)}>
-                                
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                             </svg>
-                            
-                            </Button>
-                        <Button className="edit-product float-end m-1"  
-                        onClick={handleShow} >
-                            
+
+                        </Button>
+                        <Button className="edit-product float-end m-1"
+                            onClick={handleShow} >
+
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
-                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                            <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                        </svg>
-                        
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+
                         </Button>
 
                     </Card.Body>
 
                 </div>
-              
-        <Modal animation={false} show={show} onHide={handleClose}>
+
+                <Modal animation={false} show={show} onHide={handleClose}>
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <Form id='myForm2' data-id={`${idProduct}`} onSubmit={updateProduct} >
@@ -117,18 +117,18 @@ const Produto = ({ setQuery, error, message, setError, setMessage, setLoading, l
                                 <div className="modal-body">
                                     <Form.Group controlId="exampleForm.ControlInput1">
                                         <Form.Label>Title</Form.Label>
-                                        <Form.Control type="text" placeholder="Title" name="title" required />
+                                        <Form.Control type="text" minlength="6" placeholder="Min. 6 characters" name="title" required />
                                     </Form.Group>
                                     <Form.Group controlId="exampleForm.ControlTextarea1">
                                         <Form.Label>Descripton</Form.Label>
-                                        <Form.Control as="textarea" rows={6} placeholder="Description" name="description" />
+                                        <Form.Control as="textarea" maxlength="4000" rows={6} placeholder="Max. 4000 characters" name="description" />
                                     </Form.Group>
                                     <Form.Group controlId="exampleForm.ControlInput1">
                                         <Form.Label>Stock</Form.Label>
                                         <Form.Control type="number" min="0" placeholder="0" name="stock" required />
                                     </Form.Group>
                                     <Form.Group>
-                                        <Form.File id="exampleFormControlFile1" label="Image" name="image" required />
+                                        <Form.File id="exampleFormControlFile1" label="Image Max. 5MB" name="image" required />
                                     </Form.Group>
                                 </div>
                                 <div className="modal-footer">
@@ -141,7 +141,7 @@ const Produto = ({ setQuery, error, message, setError, setMessage, setLoading, l
                             {error && <Alert variant='danger'>{error}</Alert>}
                         </div>
                     </div>
-                </Modal>    
+                </Modal>
 
 
             </div>
