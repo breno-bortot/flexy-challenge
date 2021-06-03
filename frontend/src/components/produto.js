@@ -57,8 +57,9 @@ const Produto = ({ setQuery, error, message, setError, setMessage, setLoading, l
         setLoading(false)
         setTimeout(() => {
             handleClose()
+            setQuery(`put_${idProduct}`)
         }, 1250);
-        setQuery(`put_${idProduct}`)
+        
     }
     return (
         <>

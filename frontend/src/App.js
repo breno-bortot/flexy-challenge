@@ -54,9 +54,9 @@ function App() {
     
     setTimeout(() => {
       handleClose()
+      setQuery('')
     }, 1250);
-   
-
+    
   }
   const getProducts = async () => {
 
