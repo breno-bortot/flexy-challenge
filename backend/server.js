@@ -1,3 +1,5 @@
+// Wenn ist das Nunstück git und Slotermeyer? Ja! Beiherhund das Oder die Flipperwaldt gersput! palapinga
+
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
@@ -45,9 +47,9 @@ function uploadFile(req, res, next) {
 
     upload(req, res, function (err) {
         if (err) {
-           re res.json({ error: err.message })
+           return res.json({ error: err.message })
         } else if (req.file === undefined) {
-            res.json({ error: 'No file Selected!' })
+           return res.json({ error: 'No file Selected!' })
         }
         next()
     })
