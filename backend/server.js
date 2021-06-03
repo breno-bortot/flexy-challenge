@@ -21,7 +21,7 @@ db.once('open', () => console.log('Connected to Mongoose Data Base...'))
 app.use(express.static('./public'))
 app.use(express.json())
 app.use(urlencoded({ extended: false }))
-//---------------Uploading Iamges---------------
+//---------------Uploading Images middleware-----------------------------
 // Set storage Engine 
 const storage = multer.diskStorage({
     destination: uploadPath,
@@ -32,14 +32,26 @@ const storage = multer.diskStorage({
 
 // init upload
 const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
-const upload = multer({
-    storage: storage,
-    limits: { fileSize: 5000000 },
-    fileFilter: (req, file, callback) => {
-        callback(null, imageMimeTypes.includes(file.mimetype))
-    }
-}).single('image')
 
+
+function uploadFile(req, res, next) {
+    const upload = multer({
+        storage: storage,
+        limits: { fileSize: 5000000 },
+        fileFilter: (req, file, callback) => {
+            callback(null, imageMimeTypes.includes(file.mimetype))
+        }
+    }).single('image')
+
+    upload(req, res, function (err) {
+        if (err) {
+           return res.json({ error: err.message })
+        } else if (req.file === undefined) {
+           return res.json({ error: 'No file Selected!' })
+        }
+        next()
+    })
+}
 
 
 
@@ -61,7 +73,7 @@ app.get('/produtos:id', getProduct, (req, res) => {
 })
 
 // Criar Produto
-app.post('/produtos', upload, async (req, res) => {
+app.post('/produtos', uploadFile, async (req, res) => {
     const fileName = req.file !== null ? req.file.filename : null
     const product = new Product({
         title: req.body.title,
@@ -85,7 +97,7 @@ app.post('/produtos', upload, async (req, res) => {
 
 
 // Atualizar Produto
-app.put('/produtos/:id', upload, getProduct, async (req, res) => {
+app.put('/produtos/:id', uploadFile, getProduct, async (req, res) => {
     try {
         console.log(req.body) 
         
@@ -142,6 +154,7 @@ async function getProduct(req, res, next) {
     res.product = product
     next()
 }
+
 
 //------------Function to remove images from File Storage
 function removeImage(fileName) {

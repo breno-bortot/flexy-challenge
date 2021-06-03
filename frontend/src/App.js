@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
 import { Form, Alert, Button, Modal } from 'react-bootstrap'
-
+import * as yup from 'yup'
 //---Importing Components
 import Produto from './components/produto'
 
@@ -67,10 +67,15 @@ function App() {
     setError(data.error)
 
   }
-
+  const schema = yup.object().shape({
+    image: yup.mixed().test("fileSize", "The file is too large", (value)=> {
+      return value && value[0].size <= 5000000
+    })
+  })
   return (
     <div className="App">
 
+      
       <div className="container">
         <div className="row">
           <div className="col-md-7 offset-md-2">
@@ -111,7 +116,7 @@ function App() {
                       <Form.Control type="number" min="0" placeholder="0" name="stock" required />
                     </Form.Group>
                     <Form.Group>
-                      <Form.File id="exampleFormControlFile1" label="Image" name="image" required />
+                      <Form.File id="exampleFormControlFile1" label="Image" name="image" required custom/>
                     </Form.Group>
                   </div>
                   <div className="modal-footer">
