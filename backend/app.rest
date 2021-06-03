@@ -1,0 +1,18 @@
+
+
+###
+
+GET http://localhost:5000/123123
+
+###
+
+DELETE http://localhost:5000/60b123b7cd52bf167c2e25e3
+
+###
+
+PATCH  http://localhost:5000/60b129d71c27c52ca4980a42
+Content-Type: application/json
+
+{
+    "title": "vai se foder"
+}

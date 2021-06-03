@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
 import { Form, Alert, Button, Modal } from 'react-bootstrap'
-import * as yup from 'yup'
 //---Importing Components
 import Produto from './components/produto'
 
@@ -67,11 +66,7 @@ function App() {
     setError(data.error)
 
   }
-  const schema = yup.object().shape({
-    image: yup.mixed().test("fileSize", "The file is too large", (value)=> {
-      return value && value[0].size <= 5000000
-    })
-  })
+
   return (
     <div className="App">
 

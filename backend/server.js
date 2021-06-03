@@ -45,9 +45,9 @@ function uploadFile(req, res, next) {
 
     upload(req, res, function (err) {
         if (err) {
-           return res.json({ error: err.message })
+           re res.json({ error: err.message })
         } else if (req.file === undefined) {
-           return res.json({ error: 'No file Selected!' })
+            res.json({ error: 'No file Selected!' })
         }
         next()
     })
